@@ -1,0 +1,26 @@
+# |<---------- Maximum 50 characters ----------->|
+# <type>(<scope>): (this commit will...) <subject>
+
+
+
+
+# |<-------------------- Maximum of 72 characters -------------------->|
+# BODY (WHY and HOW)
+
+# FOOTER (RELATED LINKS & WRIKE TASKS)
+
+# BREAKING CHANGE (IF ANY)
+
+# Examples
+#----------------------------------------------------------#
+# TYPE CAN BE                              # SCOPES CAN BE
+# chore     (build & deps)                 # example
+# ci        (CI config changes)            # ...
+# docs      (documentation)                # ...
+# feat      (new feature)
+# fix       (bug fixes)
+# perf      (performance improvements)
+# refactor  (refactoring code ONLY)
+# revert    (reverting code)
+# style     (formatting, no code change)
+# test      (adding/refactoring tests)
