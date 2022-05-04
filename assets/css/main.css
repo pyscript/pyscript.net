@@ -118,6 +118,13 @@ pre {
 /* ----------------------------------
  CTA content
 -----------------------------------*/
+.disclaimer {
+    background: #2D2E35;
+    font-size: .8rem;
+    line-height: 1.5;
+    padding: 1rem 2rem;
+}
+
 .dialogs {
     display: grid;
     grid-gap: 30px;
@@ -633,3 +640,57 @@ pre {
     }
 }
 
+.social {
+    background: #1D1D22;
+    border-radius: 10px;
+    margin: 2rem auto 0;
+    max-width: 340px;
+    padding: 1rem;
+}
+
+.social .profile {
+    display: flex;
+}
+
+.social .avatar img {
+    border-radius: 400px;
+    max-width: 50px;
+}
+
+.social .bio {
+    padding: 0 1rem;
+}
+
+.social .bio h5 {
+    font-size: 1.25rem;
+}
+
+.social .link {
+    color: #aaa;
+    font-size: 0.8rem;
+    text-decoration: none;
+}
+
+.social .link:hover {
+    color: #FDA803;
+}
+
+.social p {
+    font-size: .8rem;
+    margin: 1rem 0;
+}
+
+.button.twitter {
+    background-color: #000;
+    border-radius: 100px;
+    color: #fff;
+    display: inline-block;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+}
+
+.button.twitter:hover {
+    background-color: #FDA803;
+    color: #1D1D22;
+}
