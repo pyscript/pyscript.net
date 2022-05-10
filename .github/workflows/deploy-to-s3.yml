@@ -23,4 +23,6 @@ jobs:
         aws-region: ${{secrets.AWS_REGION}}
         role-to-assume: ${{ secrets.AWS_OIDC_RUNNER_ROLE }}
     - name: Sync to S3
-      run: aws s3 sync --delete . s3://pyscript-static/ --include ".well-known" --exclude ".*" # Exclude hidden files
+      run: | # Sync index and security txt; Sync assets and remove any that aren't in source
+        aws s3 sync . s3://pyscript-static/ --include ".well-known/security.txt" --include "index.html"
+        aws s3 sync --delete assets/ s3://pyscript-static/assets/ 
