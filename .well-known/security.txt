@@ -1,0 +1,4 @@
+Contact: mailto:security@pyscript.net
+Expires: 2023-05-10T18:00:00.000Z
+Preferred-Languages: en
+Canonical: https://pyscript.net/.well-known/security.txt
