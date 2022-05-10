@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+    pull_request:
 
 jobs:
   deploy:
@@ -23,4 +24,4 @@ jobs:
         role-to-assume: ${{ secrets.AWS_OIDC_RUNNER_ROLE }}
     - name: Sync to S3
       if: github.ref == 'refs/heads/main' # Only sync static contents on merges into main branch
-      run: aws s3 sync . s3://pyscript-static/ --exclude ".*" # Exclude hidden files
+      run: aws s3 sync --delete . s3://pyscript-static/ --include ".well-known" --exclude ".*" # Exclude hidden files
