@@ -1,0 +1,9 @@
+# This is the configuration for pre-commit, a local framework for managing pre-commit hooks
+#   Check out the docs at: https://pre-commit.com/
+
+default_stages: [commit]
+repos:
+-   repo: https://github.com/Lucas-C/pre-commit-hooks-java
+    rev: v1.3.10
+    hooks:
+    -   id: validate-html
