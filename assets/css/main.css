@@ -118,6 +118,62 @@ pre {
 /* ----------------------------------
  CTA content
 -----------------------------------*/
+a.examples-block {
+    display: block;
+    color: #fff;
+    margin: 0 auto;
+    padding: 1rem;
+    background: #1D1D22;
+    border: 2px solid #FDA703;
+    border-radius: 10px;
+    margin: 2rem auto;
+    /* color: #fff; */
+    text-decoration: none;
+    max-width: 370px;
+
+    align-items: center;
+    border-radius: 10px;
+    color: #fff;
+    /* cursor: pointer; */
+    display: flex;
+    padding: 1rem;
+    position: relative;
+    text-decoration: none;
+}
+
+a.examples-block span {
+    color: #FDA703;
+}
+
+.examples-block p {
+    font-size: 0.85rem;
+}
+
+.examples-block .glyph {
+    background-color: #FDA703;
+}
+
+.examples-block .glyph svg {
+    fill: #1D1D22;
+}
+
+a.examples-block:hover .glyph {
+    background-color: #1D1D22;
+}
+
+.examples-block:hover .glyph svg {
+    fill: #FDA703;
+}
+
+a.examples-block:hover span {
+    color: inherit;
+}
+
+a.examples-block:hover {
+    background: #FDA703;
+    color: #1D1D22;
+}
+
 .disclaimer {
     background: #2D2E35;
     font-size: .8rem;
@@ -130,7 +186,7 @@ pre {
     grid-gap: 30px;
     grid-template-columns: repeat(2,1fr);
     margin-top: 1rem;
-    padding: 3rem 0 0;
+    padding: 0;
 }
 
 .dialog {
