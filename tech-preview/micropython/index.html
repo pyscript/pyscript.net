@@ -1,13 +1,136 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MicroPython Technical Preview</title>
+    <link href="output.css" rel="stylesheet">
+    <script type="module" src="https://cdn.jsdelivr.net/gh/vanillawc/wc-codemirror@1/index.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/vanillawc/wc-codemirror@1/mode/python/python.js"></script>
 </head>
-<body>
-    <h1>MicroPython Technical Preview</h1>
-    <p>Nov 9, 2022 at 9AM EST</p>
+
+<body class="bg-gray-400">
+    <header class="bg-black text-white p-6 font-bold">
+        MicroPython Technical Preview <div class="float-right"><a href="https://github.com/pyscript/upys" title="github" target="_blank" ><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" viewBox="0 0 24 24" style="fill: #FFF;width:30px"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div>
+    </header>
+    <div class="flex flex-col p-2 pt-0 content-end">
+        <ul style="list-style-type:none" class="p-2 flex flex-wrap text-sm font-medium text-center text-gray-800 dark:text-gray-200">
+            <div class="grow"></div>
+            <li class="mr-2">
+                <a href="index.html" aria-current="page" class="rounded-lg inline-block p-2 text-blue-600 bg-gray-100 active dark:bg-gray-800 dark:text-blue-500">Examples</a>
+            </li>
+            <li class="mr-2">
+                <a href="simple.html" class="inline-block p-2 rounded-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300">Simple</a>
+            </li>
+            <li class="mr-2">
+                <a href="repl.html" class="inline-block p-2 rounded-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300">REPL</a>
+            </li>
+            <li class="mr-2">
+                <a href="about.html" class="inline-block p-2 rounded-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300">About</a>
+            </li>
+            <div class="grow"></div>
+        </ul>
+        <div class="flex flex-auto flex-col w-full p-2 bg-gray-100 dark:bg-slate-800 rounded-lg ring-1 ring-slate-900/5 shadow-xl">
+            <fieldset class="mb-2">
+                <input
+                    class="ml-1 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                    type="radio" id="micropython" name="runtime" value="micropython" checked>
+                <label for="micropython">MicroPython</label>
+                <input
+                    class="ml-1 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                    type="radio" id="pyodide" name="runtime" value="pyodide">
+                <label for="pyodide">Pyodide</label>
+                <select id="examples" class="float-right ml-1 w-28 border-2">
+                    <option value="py/hello.py">Hello</option>
+                    <option value="py/pirate.py">Pirate</option>
+                    <option value="py/random.py">Random</option>
+                    <option value="py/numpy.py">Numpy</option>
+                </select>
+            </fieldset>
+            <wc-codemirror id="editor" src="py/hello.py" class="w-full mb-2" mode="python">
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vanillawc/wc-codemirror@1/theme/monokai.css">
+            </wc-codemirror>
+            <button id="run" class="bg-blue-500 hover:bg-blue-700 text-white font-bold p-1 rounded">
+                    Run
+                </button>
+        </div>
+        <div style="display:none"
+            class="overflow-y-visible mt-3 p-2 bg-white dark:bg-slate-800 rounded-lg ring-1 ring-slate-900/5 shadow-xl">
+            <iframe id="output" width="100%" style="min-height: 100px;" srcdoc="<html>&lt;= Press Run</html>"></iframe>
+        </div>
+    </div>
 </body>
+
 </html>
+
+<script>
+    function snippet(event){
+        const url = event.target[event.target.selectedIndex].value
+        const editor = document.getElementById('editor');
+        editor.setAttribute('src', url)
+    }
+    function run(event) {
+        const editor = document.getElementById('editor');
+        const output = document.getElementById('output');
+        output.parentElement.setAttribute('style', "")
+        console.log(output.parentElement)
+        const runtime = document.querySelector('input[name="runtime"]:checked').value;
+        if (runtime === "pyodide") {
+            output.srcdoc = `<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Example</title>
+        <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css"/>
+        <script defer src="https://pyscript.net/latest/pyscript.js"><\/script>
+    </head>
+    <body>
+        <py-config type="json">
+        {
+            "runtime": "micropython",
+            "paths": [
+                "py/arrr.py"
+            ],
+            "packages":[
+                "numpy"
+            ]
+        }
+        </py-config>
+        <py-script>${editor.value}</py-script>
+    </body>
+    </html>`
+        } else if (runtime === "micropython") {
+            const html = `<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css"/>
+         <title>Example</title>
+    </head>
+    <body>
+<py-config>
+{
+    "runtime": "micropython",
+    "files": {
+        "arrr.py": "py/arrr.py"
+    }
+}
+</py-config>
+<py-script>
+${editor.value}
+</py-script>
+    </body>
+    </html>
+    <script src="pyscript.js" type="module"><\/script>`
+            output.srcdoc = html;
+        }
+
+    }
+    document.getElementById('run').addEventListener("click", run)
+    document.getElementById('examples').addEventListener('input', snippet)
+
+</script>
