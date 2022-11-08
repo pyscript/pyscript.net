@@ -86,7 +86,7 @@
         const dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const editor = document.getElementById('editor');
         const output = document.getElementById('output');
-        output.parentElement.setAttribute('style', "")
+        output.parentElement.setAttribute('style', "height:20rem;overflow-y:scroll")
         console.log(output.parentElement)
         const runtime = document.querySelector('input[name="runtime"]:checked').value;
         if (runtime === "pyodide") {
