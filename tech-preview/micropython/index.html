@@ -9,7 +9,7 @@
     <script type="module" src="https://cdn.jsdelivr.net/gh/vanillawc/wc-codemirror@1/mode/python/python.js"></script>
 </head>
 
-<body class="bg-gray-400">
+<body class="bg-gray-400 dark:bg-gray-700">
     <header class="bg-black text-white p-6 font-bold">
         MicroPython Technical Preview <div class="float-right"><a href="https://github.com/pyscript/upys" title="github" target="_blank" ><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" viewBox="0 0 24 24" style="fill: #FFF;width:30px"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div>
     </header>
@@ -35,11 +35,11 @@
                 <input
                     class="ml-1 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                     type="radio" id="micropython" name="runtime" value="micropython" checked>
-                <label for="micropython">MicroPython</label>
+                <label for="micropython" class="dark:text-white">MicroPython</label>
                 <input
                     class="ml-1 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                     type="radio" id="pyodide" name="runtime" value="pyodide">
-                <label for="pyodide">Pyodide</label>
+                <label for="pyodide" class="dark:text-white">Pyodide</label>
                 <select id="examples" class="float-right ml-1 w-28 border-2">
                     <option value="py/hello.py">Hello</option>
                     <option value="py/pirate.py">Pirate</option>
@@ -48,14 +48,14 @@
                 </select>
             </fieldset>
             <wc-codemirror id="editor" src="py/hello.py" class="w-full mb-2" mode="python">
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vanillawc/wc-codemirror@1/theme/monokai.css">
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vanillawc/wc-codemirror@1/theme/ayu-dark.css">
             </wc-codemirror>
             <button id="run" class="bg-blue-500 hover:bg-blue-700 text-white font-bold p-1 rounded">
                     Run
                 </button>
         </div>
         <div style="display:none"
-            class="overflow-y-visible mt-3 p-2 bg-white dark:bg-slate-800 rounded-lg ring-1 ring-slate-900/5 shadow-xl">
+            class="overflow-y-visible mt-3 p-2 bg-white dark:bg-slate-800 text-black rounded-lg ring-1 ring-slate-900/5 shadow-xl">
             <iframe id="output" width="100%" style="min-height: 100px;" srcdoc="<html>&lt;= Press Run</html>"></iframe>
         </div>
     </div>
@@ -64,12 +64,26 @@
 </html>
 
 <script>
+    function setDarkLight( dark ){
+        const editor = document.getElementById('editor')
+        if( dark ){
+            editor.setAttribute("theme", "ayu-dark")
+        }else{
+            editor.setAttribute("theme", "")
+        }
+        
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+        setDarkLight(event.matches);
+    })
+    setDarkLight(window.matchMedia('(prefers-color-scheme: dark)').matches)
     function snippet(event){
         const url = event.target[event.target.selectedIndex].value
         const editor = document.getElementById('editor');
         editor.setAttribute('src', url)
     }
     function run(event) {
+        const dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const editor = document.getElementById('editor');
         const output = document.getElementById('output');
         output.parentElement.setAttribute('style', "")
@@ -86,7 +100,7 @@
         <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css"/>
         <script defer src="https://pyscript.net/latest/pyscript.js"><\/script>
     </head>
-    <body>
+    <body ${dark? 'style="background-color:#0A0E14;color:white"' : 'style="background-color:white;color:black"'} >
         <py-config type="json">
         {
             "runtime": "micropython",
@@ -111,7 +125,7 @@
         <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css"/>
          <title>Example</title>
     </head>
-    <body>
+    <body ${dark? 'style="background-color:#0A0E14;color:white"' : 'style="background-color:white;color:black"'} >
 <py-config>
 {
     "runtime": "micropython",

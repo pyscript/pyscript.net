@@ -7,8 +7,8 @@ else:
     import numpy
     print('binary extensions... numpy is loaded via micropip')
 
-a = numpy.ndarray([1,2,3])
+a = numpy.arange(6)
 print(a)
-
-b = numpy.sqrt(a)
+b = a.reshape((2, 3))
 print(b)
+print(numpy.sqrt(b))
