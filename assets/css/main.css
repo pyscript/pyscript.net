@@ -210,6 +210,10 @@ a.examples-block:hover {
     color: #2C2E34;
 }
 
+.dialog:hover a {
+    color: #2C2E34;
+}
+
 .dialog p {
     font-size: 0.85rem;
     line-height: 1.5;
