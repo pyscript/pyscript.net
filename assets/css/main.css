@@ -194,7 +194,7 @@ a.examples-block:hover {
     background-color: #4C4F5A;
     border-radius: 10px;
     color: #fff;
-    /* cursor: pointer; */
+    cursor: pointer;
     display: flex;
     padding: 1rem;
     position: relative;
