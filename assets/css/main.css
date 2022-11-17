@@ -239,6 +239,41 @@ a.examples-block:hover {
     border-radius: 0 0 10px 10px;
 }
 
+.awesome-list {
+    display: block;
+    color: #fff;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: #4C4F5A;
+    border-radius: 10px;
+    margin: 2rem auto;
+
+    text-decoration: none;
+    max-width: 370px;
+
+    align-items: center;
+    border-radius: 10px;
+    color: #fff;
+    /* cursor: pointer; */
+    display: flex;
+    padding: 1rem;
+    position: relative;
+    text-decoration: none;
+}
+
+.awesome-list:hover {
+    background: #FDA703;
+    color: #1D1D22;
+}
+
+.awesome-list:visited {
+    color: inherit;
+}
+
+.awesome-list p {
+    font-size: 0.85rem;
+}
+
 /* dropdown content */
 .dropdown .dropdown-content {
     background: #FEA703;
