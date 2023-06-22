@@ -1,4 +1,3 @@
-'use strict';
 // REQUIRES INTEGRATION TEST
 /* c8 ignore start */
 const workerHooks = [
@@ -8,10 +7,9 @@ const workerHooks = [
     ["afterRunAsync", "codeAfterRunWorkerAsync"],
 ];
 
-class Hook {
+export class Hook {
     constructor(fields) {
         for (const [key, value] of workerHooks) this[key] = fields[value]?.();
     }
 }
-exports.Hook = Hook
 /* c8 ignore stop */

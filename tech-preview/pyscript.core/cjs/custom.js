@@ -12,6 +12,7 @@ const {
 const { getRuntimeID } = require("./loader.js");
 const { io } = require("./interpreter/_utils.js");
 const { addAllListeners } = require("./listeners.js");
+const { Hook } = require("./worker/hooks.js");
 
 const CUSTOM_SELECTORS = [];
 exports.CUSTOM_SELECTORS = CUSTOM_SELECTORS;
@@ -66,18 +67,9 @@ const handleCustomType = (node) => {
                         onBeforeRunAsync,
                         onAfterRun,
                         onAfterRunAsync,
-                        codeBeforeRunWorker,
-                        codeBeforeRunWorkerAsync,
-                        codeAfterRunWorker,
-                        codeAfterRunWorkerAsync,
                     } = options;
 
-                    const hooks = {
-                        beforeRun: codeBeforeRunWorker?.(),
-                        beforeRunAsync: codeBeforeRunWorkerAsync?.(),
-                        afterRun: codeAfterRunWorker?.(),
-                        afterRunAsync: codeAfterRunWorkerAsync?.(),
-                    };
+                    const hooks = new Hook(options);
 
                     const XWorker = function XWorker(...args) {
                         return Worker.apply(hooks, args);

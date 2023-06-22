@@ -4,6 +4,7 @@ const coincident = (m => /* c8 ignore start */ m.__esModule ? m.default : m /* c
 const xworker = (m => /* c8 ignore start */ m.__esModule ? m.default : m /* c8 ignore stop */)(require("./xworker.js"));
 const { assign, defineProperties, absoluteURL } = require("../utils.js");
 const { getText } = require("../fetch-utils.js");
+const { Hook } = require("./hooks.js");
 
 /**
  * @typedef {Object} WorkerOptions custom configuration
@@ -22,7 +23,6 @@ module.exports = (...args) =>
     function XWorker(url, options) {
         const worker = xworker();
         const { postMessage } = worker;
-        const hooks = this instanceof XWorker ? void 0 : this;
         if (args.length) {
             const [type, version] = args;
             options = assign({}, options || { type, version });
@@ -31,7 +31,10 @@ module.exports = (...args) =>
         if (options?.config) options.config = absoluteURL(options.config);
         const bootstrap = fetch(url)
             .then(getText)
-            .then((code) => postMessage.call(worker, { options, code, hooks }));
+            .then((code) => {
+                const hooks = this instanceof Hook ? this : void 0;
+                postMessage.call(worker, { options, code, hooks });
+            });
         return defineProperties(worker, {
             postMessage: {
                 value: (data, ...rest) =>
