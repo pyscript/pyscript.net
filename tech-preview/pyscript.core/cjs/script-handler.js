@@ -17,6 +17,7 @@ const queryTarget = (script, idOrSelector) => {
     const root = getRoot(script);
     return root.getElementById(idOrSelector) || $(idOrSelector, root);
 };
+exports.queryTarget = queryTarget;
 
 const targets = new WeakMap();
 const targetDescriptor = {

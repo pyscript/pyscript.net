@@ -5,13 +5,13 @@ const xworker = (m => /* c8 ignore start */ m.__esModule ? m.default : m /* c8 i
 const { handle } = require("./script-handler.js");
 const { assign } = require("./utils.js");
 const { selectors, prefixes } = require("./interpreters.js");
-const { CUSTOM_SELECTORS, handleCustomType } = require("./custom-types.js");
+const { CUSTOM_SELECTORS, handleCustomType } = require("./custom.js");
 const { listener, addAllListeners } = require("./listeners.js");
 
 (m => {
   exports.define = m.define;
   exports.whenDefined = m.whenDefined;
-})(require("./custom-types.js"));
+})(require("./custom.js"));
 const XWorker = xworker();
 exports.XWorker = XWorker;
 
