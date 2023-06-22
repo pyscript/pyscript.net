@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <title>python events</title>
+        <link rel="stylesheet" href="style.css" />
+        <script defer src="./counter.js"></script>
+        <script type="module" src="../min.js"></script>
+    </head>
+    <body>
+        <script type="pyodide">
+            def print_version(event):
+              import sys
+              print(event.type)
+              print(sys.version)
+        </script>
+        <button
+            pyodide-pointerdown="print_version(event)"
+            pyodide-click="print_version(event)"
+        >
+            pyodide version
+        </button>
+
+        <script type="micropython">
+            def print_version(event):
+              import sys
+              print(event.type)
+              print(sys.version)
+        </script>
+        <button
+            micropython-pointerdown="print_version(event)"
+            micropython-click="print_version(event)"
+        >
+            micropython version
+        </button>
+    </body>
+</html>
