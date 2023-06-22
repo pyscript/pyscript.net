@@ -5,7 +5,8 @@
 //    Please check via `npm run size` that worker code is not much
 //    bigger than it used to be before any changes is applied to this file.
 
-const coincident = (m => /* c8 ignore start */ m.__esModule ? m.default : m /* c8 ignore stop */)(require("coincident/structured"));
+const JSON = require("@ungap/structured-clone/json");
+const coincident = (m => /* c8 ignore start */ m.__esModule ? m.default : m /* c8 ignore stop */)(require("coincident/window"));
 
 const { create } = require("../utils.js");
 const { registry } = require("../interpreters.js");
@@ -38,9 +39,15 @@ const add = (type, fn) => {
     );
 };
 
+const { proxy: sync, window, isWindowProxy } = coincident(self, JSON);
+
 const xworker = {
     // allows synchronous utilities between this worker and the main thread
-    sync: coincident(self),
+    sync,
+    // allow access to the main thread world
+    window,
+    // allow introspection for foreign (main thread) refrences
+    isWindowProxy,
     // standard worker related events / features
     onerror() {},
     onmessage() {},

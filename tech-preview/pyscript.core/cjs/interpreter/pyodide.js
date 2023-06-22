@@ -1,6 +1,12 @@
 'use strict';
 const { fetchPaths, stdio } = require("./_utils.js");
-const { run, runAsync, writeFile } = require("./_python.js");
+const {
+    run,
+    runAsync,
+    setGlobal,
+    deleteGlobal,
+    writeFile
+} = require("./_python.js");
 
 const type = "pyodide";
 
@@ -25,12 +31,8 @@ module.exports = {
         }
         return interpreter;
     },
-    setGlobal(interpreter, name, value) {
-        interpreter.globals.set(name, value);
-    },
-    deleteGlobal(interpreter, name) {
-        interpreter.globals.delete(name);
-    },
+    setGlobal,
+    deleteGlobal,
     run,
     runAsync,
     writeFile,
