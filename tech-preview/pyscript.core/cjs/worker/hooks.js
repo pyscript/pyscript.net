@@ -9,8 +9,17 @@ const workerHooks = [
 ];
 
 class Hook {
-    constructor(fields) {
-        for (const [key, value] of workerHooks) this[key] = fields[value]?.();
+    constructor(interpreter, options) {
+        this.interpreter = interpreter;
+        this.onWorkerReady = options.onWorkerReady;
+        for (const [key, value] of workerHooks) this[key] = options[value]?.();
+    }
+    get stringHooks() {
+        const hooks = {};
+        for (const [key] of workerHooks) {
+            if (this[key]) hooks[key] = this[key];
+        }
+        return hooks;
     }
 }
 exports.Hook = Hook

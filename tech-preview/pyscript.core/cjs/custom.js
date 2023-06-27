@@ -48,7 +48,7 @@ const handleCustomType = (node) => {
                     version,
                     config,
                     env,
-                    onRuntimeReady,
+                    onInterpreterReady,
                 } = options;
                 const name = getRuntimeID(runtime, version);
                 const id = env || `${name}${config ? `|${config}` : ""}`;
@@ -69,7 +69,7 @@ const handleCustomType = (node) => {
                         onAfterRunAsync,
                     } = options;
 
-                    const hooks = new Hook(options);
+                    const hooks = new Hook(interpreter, options);
 
                     const XWorker = function XWorker(...args) {
                         return Worker.apply(hooks, args);
@@ -123,7 +123,7 @@ const handleCustomType = (node) => {
 
                     resolve(resolved);
 
-                    onRuntimeReady?.(resolved, node);
+                    onInterpreterReady?.(resolved, node);
                 });
             }
         }
@@ -137,17 +137,17 @@ exports.handleCustomType = handleCustomType;
 const registry = new Map();
 
 /**
- * @typedef {Object} PluginOptions custom configuration
+ * @typedef {Object} CustomOptions custom configuration
  * @prop {'pyodide' | 'micropython' | 'wasmoon' | 'ruby-wasm-wasi'} interpreter the interpreter to use
  * @prop {string} [version] the optional interpreter version to use
  * @prop {string} [config] the optional config to use within such interpreter
- * @prop {(environment: object, node: Element) => void} [onRuntimeReady] the callback that will be invoked once
+ * @prop {(environment: object, node: Element) => void} [onInterpreterReady] the callback that will be invoked once
  */
 
 /**
  * Allows custom types and components on the page to receive interpreters to execute any code
  * @param {string} type the unique `<script type="...">` identifier
- * @param {PluginOptions} options the custom type configuration
+ * @param {CustomOptions} options the custom type configuration
  */
 const define = (type, options) => {
     if (defaultRegistry.has(type) || registry.has(type))
