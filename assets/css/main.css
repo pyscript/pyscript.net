@@ -126,11 +126,10 @@ a.examples-block {
     background: #1D1D22;
     border: 2px solid #FDA703;
     border-radius: 10px;
-    margin: 2rem auto;
     /* color: #fff; */
     text-decoration: none;
-    max-width: 370px;
-
+    /* max-width: 350px; */
+    width: 100%;
     align-items: center;
     border-radius: 10px;
     color: #fff;
@@ -185,7 +184,7 @@ a.examples-block:hover {
     display: grid;
     grid-gap: 30px;
     grid-template-columns: repeat(2,1fr);
-    margin-top: 1rem;
+    margin-top: 2rem;
     padding: 0;
 }
 
