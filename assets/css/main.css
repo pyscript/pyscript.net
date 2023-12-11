@@ -253,6 +253,7 @@ a.examples-block:hover {
     visibility: hidden;
     width: 100%;
     z-index: 9999;
+    cursor: default;
 }
 
 .dropdown .inner {
