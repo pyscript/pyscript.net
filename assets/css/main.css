@@ -296,6 +296,7 @@ a.examples-block:hover {
 
 .dropdown-content .close:hover {
     background: #2D2E35;
+    cursor: pointer;
 }
 
 .file-download {
