@@ -459,10 +459,6 @@ a.examples-block:hover {
  Mobile layout
 -----------------------------------*/
 @media all and (max-width: 700px) {
-    .terminal p {
-        font-size: .8rem;
-        left: 3%;
-    }
 
     #typewriter {
         left: -253px;

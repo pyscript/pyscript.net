@@ -1,7 +1,0 @@
-{
-    "js_modules": {
-        "main": {
-            "https://cdn.jsdelivr.net/npm/@xterm/addon-fit/+esm": "fit"
-        }
-    }
-}
