@@ -51,11 +51,39 @@
             <section class="content">
 
                 <!-- begin terminal window -->
+                <div id="new-terminal">
                 <script id="python-terminal" type="mpy" terminal worker>
                 import code
                 code.interact()
                 </script>
                 <script type="mpy" src="./main.py" async></script>
+                </div>
+
+                <div class="old-terminal" id="old-terminal">
+                    <div class="menu">
+                        <div class="window-buttons close"></div>
+                        <div class="window-buttons minimize"></div>
+                        <div class="window-buttons zoom"></div>
+                    </div>
+                    <div class="screen">
+                        <div class="code">
+
+                            <pre id="typewriter">
+                            Wouldn't it be cool...
+                            to run Python...
+                            in your browser?
+                            </pre>
+
+                            <p class="line1">&lt;html&gt;<span class="cursor1">|</span></p>
+                            <p class="line2">&nbsp;&nbsp;...<span class="cursor2">|</span></p>
+                            <p class="line3">&nbsp;&nbsp;&lt;script type="py"&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #aaa;"><span style="color:#FFD580;">print</span>(<span style="color:#BAE67E;">'You can!'</span>)</span><br/>&nbsp;&nbsp;&lt;/script&gt;<span class="cursor3">|</span></p>
+                            <p class="line4">&lt;/html&gt;<span class="cursor4">|</span></p>
+
+                            <p class="line5"><span class="cursor5">|</span></p>
+
+                        </div>
+                    </div>
+                </div>
                 <!-- end terminal window -->
 
                 <div class="dialogs">
@@ -208,6 +236,78 @@ of people. Python is one of the
             </section>
         </main>
 
+        <script>
+            // Typing animation
+            function setupTypewriter(t) {
+                var HTML = t.innerHTML;
+
+                t.innerHTML = '';
+
+                var cursorPosition = 0,
+                    tag = '',
+                    writingTag = false,
+                    tagOpen = false,
+                    typeSpeed = 100,
+                    tempTypeSpeed = 0;
+
+                var type = function() {
+
+                    if (writingTag === true) {
+                        tag += HTML[cursorPosition];
+                    }
+
+                    if (HTML[cursorPosition] === '<') {
+                        tempTypeSpeed = 0;
+                        if (tagOpen) {
+                            tagOpen = false;
+                            writingTag = true;
+                        } else {
+                            tag = '';
+                            tagOpen = true;
+                            writingTag = true;
+                            tag += HTML[cursorPosition];
+                        }
+                    }
+                    if (!writingTag && tagOpen) {
+                        tag.innerHTML += HTML[cursorPosition];
+                    }
+                    if (!writingTag && !tagOpen) {
+                        if (HTML[cursorPosition] === ' ') {
+                            tempTypeSpeed = 0;
+                        }
+                        else {
+                            tempTypeSpeed = (Math.random() * typeSpeed) + 50;
+                        }
+                        t.innerHTML += HTML[cursorPosition];
+                    }
+                    if (writingTag === true && HTML[cursorPosition] === '>') {
+                        tempTypeSpeed = (Math.random() * typeSpeed) + 50;
+                        writingTag = false;
+                        if (tagOpen) {
+                            var newSpan = document.createElement('span');
+                            t.appendChild(newSpan);
+                            newSpan.innerHTML = tag;
+                            tag = newSpan.firstChild;
+                        }
+                    }
+
+                    cursorPosition += 1;
+                    if (cursorPosition < HTML.length - 1) {
+                        setTimeout(type, tempTypeSpeed);
+                    }
+                };
+
+                return {
+                    type: type
+                };
+            }
+
+            let typer = document.getElementById('typewriter');
+
+            typewriter = setupTypewriter(typewriter);
+
+            typewriter.type();
+        </script>
 
         <!-- BEGIN HEAP INTEGRATION -->
 		<script type="text/javascript">
@@ -215,5 +315,17 @@ of people. Python is one of the
 			heap.load("758475466");
 		</script>
 		<!-- END HEAP INTEGRATION -->
+        <script>
+        // It's a hack.
+        if(
+          navigator.userAgent.includes("Firefox") &&
+          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+
+        ) {
+          document.getElementById("new-terminal").style.display = "none";
+          document.getElementById("old-terminal").style.display = "block";
+        }
+
+        </script>
 	</body>
 </html>
