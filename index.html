@@ -317,15 +317,14 @@ of people. Python is one of the
 		<!-- END HEAP INTEGRATION -->
         <script>
         // It's a hack.
-        if(
-          navigator.userAgent.includes("Firefox") &&
-          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-
-        ) {
+        try{
+          var sab = new SharedArrayBuffer(1024);
+          if(sab===undefined)throw new Error('not supported')
+        }
+        catch(e){
           document.getElementById("new-terminal").style.display = "none";
           document.getElementById("old-terminal").style.display = "block";
         }
-
         </script>
 	</body>
 </html>
