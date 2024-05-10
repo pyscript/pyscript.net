@@ -762,3 +762,18 @@ a.examples-block:hover {
     background-color: #FDA803;
     color: #1D1D22;
 }
+
+
+/* ----------------------------------
+ MicroPython Terminal
+-----------------------------------*/
+
+.xterm {
+    padding-left: 1rem;
+    border-radius: 10px;
+    overflow-y: auto;
+}
+
+.xterm .xterm-viewport {
+    border-radius: 10px;
+}
