@@ -457,10 +457,11 @@ a.examples-block:hover {
 /* ----------------------------------
  Terminal interface
 -----------------------------------*/
-.terminal {
+.old-terminal {
     box-shadow: 1px 1px 40px rgb(0 0 0 / 30%);
     margin: 0 auto;
     max-width: 650px;
+    display: none;
 }
 
 .window-buttons {
@@ -537,7 +538,7 @@ a.examples-block:hover {
     animation: blink 500ms linear infinite alternate;
 } */
 
-.terminal p {
+.old-terminal p {
     font-family: 'Hack Regular', monospace;
     font-size: 1em;
     left: 10%;
@@ -548,7 +549,7 @@ a.examples-block:hover {
     width: 0;
 }
 
-.terminal span {
+.old-terminal span {
     color: #fff;
     font-weight: bold;
 }
@@ -664,7 +665,7 @@ a.examples-block:hover {
  Mobile layout
 -----------------------------------*/
 @media all and (max-width: 700px) {
-    .terminal p {
+    .old-terminal p {
         font-size: .8rem;
         left: 3%;
     }
