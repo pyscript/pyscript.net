@@ -23,5 +23,5 @@ jobs:
         role-to-assume: ${{ secrets.AWS_OIDC_RUNNER_ROLE }}
     - name: Sync to S3
       run: | # Sync index and security txt, exclude hidden files; Sync assets and remove any that aren't in source
-        aws s3 sync . s3://pyscript.net/ --exclude ".*" --include ".well-known/security.txt" --include "index.html" --include "error.html"
+        aws s3 sync . s3://pyscript.net/ --exclude ".*" --include ".well-known/security.txt" --include "index.html" --include "error.html" --include "mini-coi.js" --include "main.py"
         aws s3 sync --delete assets/ s3://pyscript.net/assets/ 
