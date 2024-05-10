@@ -1,5 +1,11 @@
 """
-Well done! You've found the source. Now go build cool stuff.
+Well done! You've found the source.
+
+If you're at PyCon 2024, email ntollervey <at> anaconda.com
+and (subject to availability) you can have some PyScript
+swag. :-)
+
+Now go build cool stuff with PyScript.
 """
 import asyncio
 import random

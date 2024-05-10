@@ -318,7 +318,7 @@ of people. Python is one of the
         <script>
         // It's a hack.
         try{
-          var sab = new SharedArrayBuffer(1024);
+          var sab = new SharedArrayBuffer(4);
           if(sab===undefined)throw new Error('not supported')
         }
         catch(e){
