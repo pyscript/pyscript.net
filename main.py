@@ -29,6 +29,7 @@ async def type_it_in(code):
             )
             await asyncio.sleep(wait)
             python_terminal.terminal.write(char)
+        python_terminal.terminal.write("\x1b[2K\r>>> ")
         python_terminal.process(line.strip())
 
 
