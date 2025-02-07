@@ -33,7 +33,7 @@ a:visited {
     font-family: 'Hack Regular';
     font-style: normal;
     font-weight: normal;
-    src: local('Hack Regular'), url('assets/fonts/Hack-Regular.woff') format('woff');
+    src: local('Hack Regular'), url('/assets/fonts/Hack-Regular.woff') format('woff');
 }
 
 
@@ -169,6 +169,223 @@ a.examples-block:hover span {
 
 a.examples-block:hover {
     background: #FDA703;
+    color: #1D1D22;
+}
+
+.newsletter-section {
+    background: #1D1D22;
+    border-radius: 10px;
+    margin: 2rem auto 0;
+    max-width: 340px;
+    padding: 0;
+}
+
+/* Main container classes */
+#newsletter-form-container {
+    background-color: #1D1D22;
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: none;
+}
+
+.newsletter-wrapper {
+    text-align: center;
+}
+
+.newsletter-content {
+    margin-bottom: 1.5rem;
+}
+
+.newsletter-content h4 {
+    color: #FDA703;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.25rem;
+}
+
+.newsletter-content p {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+/* Form elements */
+.newsletter-form {
+    margin: 0;
+}
+
+.newsletter-field {
+    margin-bottom: 1rem;
+}
+
+.newsletter-field input {
+    background-color: #fff;
+    border: none;
+    border-radius: 25px;
+    color: #666;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    width: 100%;
+}
+
+/* Checkbox styling */
+.newsletter-checkbox {
+    margin: 0.5rem 0;
+    text-align: left;
+}
+
+.newsletter-checkbox label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.newsletter-checkbox input[type="checkbox"] {
+    margin: 0;
+    width: auto;
+}
+
+.newsletter-checkbox .label-description p {
+    color: #fff;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Privacy section */
+.newsletter-privacy {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85rem;
+    margin: 0.75rem 0;
+    line-height: 1.3;
+    text-align: left;
+}
+
+.newsletter-privacy a {
+    color: #FDA703;
+    text-decoration: none;
+}
+
+/* Submit button */
+.newsletter-submit {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.newsletter-submit button.primary {
+    background-color: #000;
+    border-radius: 100px;
+    color: #fff;
+    display: inline-block;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0.5rem 1.5rem;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.newsletter-submit button.primary:hover {
+    background-color: #FDA803;
+    color: #1D1D22;
+}
+
+.loading-indicator {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Success state */
+.newsletter-success {
+    display: none;
+    text-align: center;
+    padding: 1rem;
+}
+
+.newsletter-success h4 {
+    color: #FDA703;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+}
+
+.newsletter-success p {
+    color: #fff;
+    font-size: 1rem;
+}
+
+.social {
+    background: #1D1D22;
+    border-radius: 10px;
+    margin: 2rem auto 0;
+    max-width: 340px;
+    padding: 1rem;
+}
+
+.social .profile {
+    display: flex;
+    position: relative;
+}
+
+.social svg {
+    height: 25px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 25px;
+}
+
+.social .avatar img {
+    border-radius: 400px;
+    max-width: 50px;
+}
+
+.social .bio {
+    padding: 0 1rem;
+}
+
+.social .bio h5 {
+    font-size: 1.25rem;
+}
+
+.social .link {
+    color: #aaa;
+    font-size: 0.8rem;
+    text-decoration: none;
+}
+
+.social .link:hover {
+    color: #FDA803;
+}
+
+.social p {
+    font-size: .8rem;
+    margin: 1rem 0;
+}
+
+.button.twitter {
+    background-color: #000;
+    border-radius: 100px;
+    color: #fff;
+    display: inline-block;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+}
+
+.button.twitter:hover {
+    background-color: #FDA803;
     color: #1D1D22;
 }
 
@@ -697,70 +914,10 @@ a.examples-block:hover {
     .screen {
         overflow-x: scroll;
     }
-}
 
-.social {
-    background: #1D1D22;
-    border-radius: 10px;
-    margin: 2rem auto 0;
-    max-width: 340px;
-    padding: 1rem;
-}
-
-.social .profile {
-    display: flex;
-    position: relative;
-}
-
-.social svg {
-    height: 25px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 25px;
-}
-
-.social .avatar img {
-    border-radius: 400px;
-    max-width: 50px;
-}
-
-.social .bio {
-    padding: 0 1rem;
-}
-
-.social .bio h5 {
-    font-size: 1.25rem;
-}
-
-.social .link {
-    color: #aaa;
-    font-size: 0.8rem;
-    text-decoration: none;
-}
-
-.social .link:hover {
-    color: #FDA803;
-}
-
-.social p {
-    font-size: .8rem;
-    margin: 1rem 0;
-}
-
-.button.twitter {
-    background-color: #000;
-    border-radius: 100px;
-    color: #fff;
-    display: inline-block;
-    font-weight: 700;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-}
-
-.button.twitter:hover {
-    background-color: #FDA803;
-    color: #1D1D22;
+    .newsletter-section {
+        padding: 0 1rem;
+    }
 }
 
 
