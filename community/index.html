@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>PyScript is an open source platform for Python in the browser.</title>
+		<meta name="description" content="PyScript">
+		<meta name="author" content="Anaconda Inc.">
+		<meta property="og:title" content="Pyscript.net">
+		<meta property="og:type" content="website">
+		<meta property="og:description" content="PyScript is a platform for Python in the browser.">
+		<meta property="og:image" content="/assets/images/pyscript-preview.png">
+    <meta property="og:site_name" content="Pyscript.net">
+    <meta property="og:url" content="https://pyscript.net">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="PyScript.net">
+    <meta name="twitter:description" content="PyScript is a platform for Python in the browser.">
+    <meta name="twitter:image" content="/assets/images/pyscript-preview.png">
+    <meta name="twitter:site" content="@pyscript_dev">
+    <link rel="icon" href="/assets/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.min.css?v=1.6">
+    <script src="/assets/js/mailerlite-script.min.js?=v1.0" defer></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKETQQ110J"></script>
+    <style>
+        .other-examples {
+            text-align: center;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        canvas.show-flakes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 1s ease-out;
+        }
+    </style>
+    <script type="module">
+        import SnowFlakes from '/assets/js/snow-flakes.js';
+
+        const canvas = document.createElement('canvas');
+        canvas.classList.add('show-flakes');
+        document.body.appendChild(canvas);
+
+        new SnowFlakes(canvas, 10 + Math.random() * 100, 2).start();
+        setTimeout(() => {
+            canvas.style.opacity = 1;
+        }, 1000);
+    </script>
+	</head>
+
+	<body>
+        <main class="main">
+
+             <!-- begin header -->
+            <header class="site-header">
+                <div class="logo">
+                    <img src="/assets/images/pyscript-sticker-black.svg">
+                    <strong class="subhead">PyScript community projects and examples.</strong>
+                </div>
+            </header>
+            <!-- end header -->
+
+            <section class="content">
+                <div class="dialogs">
+                    <a href="https://ambv.pyscriptapps.com/streamline/latest/" target="_blank" rel="noreferrer noopener" class="examples-block">
+                        <div class="glyph" style="background: url('/assets/images/streamline.jpg');width: 128px;height: 100px;background-size: cover;"></div>
+                        <div>
+                            <h2>Streamline</h2>
+                            <br>
+                            <p>A game from <span>Łukasz Langa</span>.</p>
+                            <p>Based on <span>MicroPython</span> and <span>Three.js</span>.</p>
+                        </div>
+                    </a>
+                    <a href="https://python-bingo.netlify.app/" target="_blank" rel="noreferrer noopener" class="examples-block">
+                        <div class="glyph" style="background: url('/assets/images/bingo.jpg');width: 128px;height: 100px;background-size: cover;"></div>
+                        <div>
+                            <h2>Python Bingo</h2>
+                            <br>
+                            <p>End of Year Holidays Edition.</p>
+                            <p>Created by <span>Rodrigo Silva Ferreira</span>.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="dialogs">
+                    <a href="https://puepy.dev/" target="_blank" rel="noreferrer noopener" class="examples-block">
+                        <div class="glyph" style="background: url('/assets/images/puepy.jpg');width: 128px;height: 100px;background-size: cover;"></div>
+                        <div>
+                            <h2>PuePy</h2>
+                            <br>
+                            <p>A pure Python frontend web framework.</p>
+                            <p>Created by <span>Ken Kinder</span>.</p>
+                        </div>
+                    </a>
+                    <a href="https://pyscript.github.io/ltk/" target="_blank" rel="noreferrer noopener" class="examples-block">
+                        <div class="glyph" style="background: url('/assets/images/ltk.jpg');width: 128px;height: 100px;background-size: cover;"></div>
+                        <div>
+                            <h2>LTK</h2>
+                            <br>
+                            <p>The LTK Kitchensink for PyScript.</p>
+                            <p>Created by <span>Chris Laffra</span>.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="other-examples">
+                    See other examples by topic <a href="https://pyscript.com/@examples" target="_blank" rel="noreferrer noopener">online</a>.
+                </div>
+
+                <footer class="site-footer">
+                    <a href="https://github.com/pyscript/pyscript.net" class="footer-button" target="_blank">
+                        <div class="icon">
+                            <svg width="1024px" height="1024px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="icon">
+                            <path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0 1 38.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <span>Source code</span>
+                        </div>
+                    </a>
+
+                    <div class="copyright">
+                        <p>Copyright &copy; 2022-present, PyScript Development Team - Originated at <a href="https://anaconda.com" target="_blank">Anaconda, Inc.</a> in 2022
+                    </div>
+                </footer>
+
+            </section>
+        </main>
+		<!-- END HEAP INTEGRATION -->
+	</body>
+</html>
