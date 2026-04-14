@@ -47,14 +47,19 @@
     <script type="module">
         import SnowFlakes from '/assets/js/snow-flakes.js';
 
-        const canvas = document.createElement('canvas');
-        canvas.classList.add('show-flakes');
-        document.body.appendChild(canvas);
+        const month = (new Date).getMonth();
 
-        new SnowFlakes(canvas, 10 + Math.random() * 100, 2).start();
-        setTimeout(() => {
-            canvas.style.opacity = 1;
-        }, 1000);
+        // show snow flakes only in winter
+        if (month < 2 || month > 10) {
+            const canvas = document.createElement('canvas');
+            canvas.classList.add('show-flakes');
+            document.body.appendChild(canvas);
+
+            new SnowFlakes(canvas, 10 + Math.random() * 100, 2).start();
+            setTimeout(() => {
+                canvas.style.opacity = 1;
+            }, 1000);
+        }
     </script>
 	</head>
 
